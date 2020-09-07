@@ -1,0 +1,26 @@
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
+_public_hdrs = [
+    "include/boost/*.hpp",
+    "include/boost/container_adaptor/*.hpp",
+    "include/boost/container_adaptor/support/*.hpp",
+    "include/boost/property_map/*.hpp",
+    "include/boost/relation/*.hpp",
+    "include/boost/support/*.hpp",
+    "include/boost/tags/*.hpp",
+    "include/boost/tags/support/*.hpp",
+    "include/boost/views/*.hpp",
+]
+
+cc_library(
+    name = "bimap_internal",
+    hdrs = glob(["include/boost/**/*.hpp"], exclude = _public_hdrs),
+)
+
+cc_library(
+    name = "bimap",
+    visibility = ["//visibility:public"],
+    includes = ["include"],
+    hdrs = glob(_public_hdrs),
+    deps = [":bimap_internal"],
+)
