@@ -24,10 +24,10 @@ cc_library(
     hdrs = glob(_public_hdrs),
     deps = [
         ":bimap_internal",
-        "@boost//config",
-        "@boost//mpl",
-        "@boost//serialization",
-        "@boost//concept_check",
-        "@boost//multi_index",
+        "@boost//libs/config",
+        "@boost//libs/mpl",
+        "@boost//libs/serialization",
+        "@boost//libs/concept_check",
+        "@boost//libs/multi_index",
     ],
 )
